@@ -1,0 +1,24 @@
+{
+  "launcher": {
+    "version": "1.0.0",
+    "downloadUrl": "https://github.com/Thefirenight/wuwapie-releases/releases/download/launcher-v1.0.0/WuwaPieLauncher.zip",
+    "changelog": ""
+  },
+  "apps": {
+    "wuwapie": {
+      "version": "1.0.0",
+      "displayName": "WuwaPie",
+      "executableName": "WuwaPie.exe",
+      "imageUrl": "https://raw.githubusercontent.com/Thefirenight/wuwapie-releases/main/assets/wuwapie-banner.webp",
+      "downloadUrl": "https://github.com/Thefirenight/wuwapie-releases/releases/download/wuwapie-v1.0.0/WuwaPie.zip",
+      "changelog": "",
+      "database": {
+        "type": "local-file",
+        "version": "20260507",
+        "downloadUrl": "https://github.com/Thefirenight/wuwapie-releases/releases/download/db-20260507/WuwaDatabase.db",
+        "installPath": "%LOCALAPPDATA%\\com.kuniglios.wuwapie\\Data\\WuwaPie\\Database\\WuwaDatabase.db",
+        "changelog": ""
+      }
+    }
+  }
+}

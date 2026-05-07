@@ -1,0 +1,10 @@
+# Sorties de build — non versionnées (uploadées comme assets GitHub Release)
+WuwaPie/
+WuwaPieLauncher/
+WuwaDatabase.db
+*.zip
+
+# Versionnés dans ce repo
+!manifest.json
+!assets/
+!pack.ps1
