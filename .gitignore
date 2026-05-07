@@ -4,7 +4,9 @@ WuwaPieLauncher/
 WuwaDatabase.db
 *.zip
 
+# Script de packaging local
+pack.ps1
+
 # Versionnés dans ce repo
 !manifest.json
 !assets/
-!pack.ps1
