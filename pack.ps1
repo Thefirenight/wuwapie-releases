@@ -38,7 +38,7 @@ function Warn([string]$msg) { Write-Host "  ! $msg"   -ForegroundColor Yellow }
 Step "Publication WuwaPieLauncher v$LauncherVersion"
 $launcherSrc = "$root\WuwaPieLauncher\build\WuwaPieLauncher"
 dotnet publish "$root\WuwaPieLauncher\WuwaPieLauncher.csproj" `
-    -f net10.0-windows10.0.19041.0 -c Release -r win-x64 `
+    -f net10.0-windows10.0.19041.0 -c Release `
     -p:PublishSingleFile=true -p:EnableCompressionInSingleFile=true
 if ($LASTEXITCODE -ne 0) { throw "Échec publication WuwaPieLauncher" }
 Ok "Publié dans $launcherSrc"
@@ -47,7 +47,7 @@ Ok "Publié dans $launcherSrc"
 Step "Publication WuwaPie v$AppVersion"
 $appSrc = "$root\WuwaPie\build\WuwaPie"
 dotnet publish "$root\WuwaPie\WuwaPie.csproj" `
-    -f net10.0-windows10.0.19041.0 -c Release -r win-x64 `
+    -f net10.0-windows10.0.19041.0 -c Release `
     -p:PublishSingleFile=true -p:EnableCompressionInSingleFile=true
 if ($LASTEXITCODE -ne 0) { throw "Échec publication WuwaPie" }
 Ok "Publié dans $appSrc"
