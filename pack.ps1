@@ -3,7 +3,7 @@
     Prépare les artefacts de release pour WuwaPieRelease.
 
 .DESCRIPTION
-    1. Publie WuwaPie et WuwaPieLauncher en Release
+    1. Publie WuwaPie et WuwaPieLauncher en Release (SingleFile + compression)
     2. Copie WuwaDatabase.db depuis WuwaHub
     3. Crée les zips prêts à uploader sur GitHub Releases
 
@@ -38,14 +38,18 @@ function Warn([string]$msg) { Write-Host "  ! $msg"   -ForegroundColor Yellow }
 Step "Publication WuwaPieLauncher v$LauncherVersion"
 $launcherSrc = "$root\WuwaPieLauncher\build\WuwaPieLauncher"
 dotnet publish "$root\WuwaPieLauncher\WuwaPieLauncher.csproj" `
-    -f net10.0-windows10.0.19041.0 -c Release | Out-Null
+    -f net10.0-windows10.0.19041.0 -c Release -r win-x64 `
+    -p:PublishSingleFile=true -p:EnableCompressionInSingleFile=true
+if ($LASTEXITCODE -ne 0) { throw "Échec publication WuwaPieLauncher" }
 Ok "Publié dans $launcherSrc"
 
 # ── 2. Publier WuwaPie ──────────────────────────────────────────────────────
 Step "Publication WuwaPie v$AppVersion"
 $appSrc = "$root\WuwaPie\build\WuwaPie"
 dotnet publish "$root\WuwaPie\WuwaPie.csproj" `
-    -f net10.0-windows10.0.19041.0 -c Release | Out-Null
+    -f net10.0-windows10.0.19041.0 -c Release -r win-x64 `
+    -p:PublishSingleFile=true -p:EnableCompressionInSingleFile=true
+if ($LASTEXITCODE -ne 0) { throw "Échec publication WuwaPie" }
 Ok "Publié dans $appSrc"
 
 # ── 3. Copier WuwaDatabase.db ───────────────────────────────────────────────
