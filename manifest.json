@@ -9,7 +9,7 @@
       "version": "1.0.0",
       "displayName": "WuwaPie",
       "executableName": "WuwaPie.exe",
-      "imageUrl": "https://raw.githubusercontent.com/Thefirenight/wuwapie-releases/main/assets/wuwapie-banner.webp",
+      "imageUrl": "https://raw.githubusercontent.com/Thefirenight/wuwapie-releases/master/assets/wuwapie-banner.webp",
       "downloadUrl": "https://github.com/Thefirenight/wuwapie-releases/releases/download/wuwapie-v1.0.0/WuwaPie.zip",
       "changelog": "",
       "database": {

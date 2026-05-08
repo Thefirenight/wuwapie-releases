@@ -21,10 +21,30 @@ WuwaPieRelease/
 ├── manifest.json          ← Versionné, édité à chaque release
 ├── pack.ps1               ← Script de packaging (exécuté en local)
 ├── .gitignore             ← Ignore zips, dossiers build, WuwaDatabase.db
-└── assets/
-    ├── wuwapie-banner.webp     ← Bannière card Home (ratio 16:9)
-    └── wuwahub-banner.webp     ← (exemple — ajouter les images ici)
+├── assets/
+│   ├── wuwapie-banner.webp     ← Bannière card Home (ratio 16:9)
+│   └── wuwahub-banner.webp     ← (exemple — ajouter les images ici)
+└── Setup/                 ← Installateur Electron (voir Setup/CLAUDE.md)
+    ├── src/main.js        ← Processus principal, extraction ZIP
+    ├── src/index.html     ← UI visuelle
+    ├── src/renderer.js    ← Logique UI, canvas animé
+    ├── src/preload.js     ← Pont contextBridge
+    ├── payload/           ← WuwaPieLauncher.zip à placer ici pour le build prod
+    └── package.json
 ```
+
+## Séparation data / apps
+
+L'écosystème distingue deux espaces de stockage :
+
+| Espace | Chemin | Contenu |
+|---|---|---|
+| **Data** (fixe) | `%LOCALAPPDATA%\com.kuniglios.wuwapie\` | DB, logs, history, settings |
+| **Apps** (choix user) | `{racine_install}\Apps\{key}\` | Binaires — choisis via le setup Electron |
+
+Le setup Electron (`Setup/`) demande à l'utilisateur où installer, puis extrait le launcher dans `{choix}\Apps\launcher\`. Le launcher installe ensuite WuwaPie dans `{choix}\Apps\wuwapie\`.
+
+Les **données** (dont `database.installPath`) pointent toujours vers `%LOCALAPPDATA%\com.kuniglios.wuwapie\` — indépendamment du choix d'installation.
 
 ## Fonctionnement du manifest
 
@@ -56,7 +76,7 @@ https://raw.githubusercontent.com/Thefirenight/wuwapie-releases/main/manifest.js
         "type": "local-file",
         "version": "20260507",
         "downloadUrl": "URL du WuwaDatabase.db sur GitHub Releases",
-        "installPath": "%LOCALAPPDATA%\\com.kuniglios.wuwapie\\Data\\WuwaPie\\Database\\WuwaDatabase.db",
+        "installPath": "%LOCALAPPDATA%\\com.kuniglios.wuwapie\\WuwaPie\\Database\\WuwaDatabase.db",
         "changelog": "Description"
       }
     }
@@ -74,7 +94,7 @@ https://raw.githubusercontent.com/Thefirenight/wuwapie-releases/main/manifest.js
 | `downloadUrl` | URL du zip — doit être un asset GitHub Releases |
 | `database.type` | `local-file` (géré), `api` (informatif), `online-db` (informatif) |
 | `database.version` | Format `YYYYMMDD` — comparé à la version installée dans `launcher_settings.json` |
-| `database.installPath` | Chemin absolu avec variables d'env (`%LOCALAPPDATA%`, etc.) |
+| `database.installPath` | Chemin absolu dans la zone **data** — toujours `%LOCALAPPDATA%\com.kuniglios.wuwapie\{app}\Database\` |
 
 ### Types d'URL selon le contenu
 
