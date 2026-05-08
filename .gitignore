@@ -10,3 +10,10 @@ pack.ps1
 # Versionnés dans ce repo
 !manifest.json
 !assets/
+
+# Electron installateur — dépendances et sorties de build
+Setup/node_modules/
+Setup/dist/
+Setup/payload/*.msix
+Setup/payload/*.exe
+Setup/.env
