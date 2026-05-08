@@ -11,9 +11,5 @@ pack.ps1
 !manifest.json
 !assets/
 
-# Electron installateur — dépendances et sorties de build
-Setup/node_modules/
-Setup/dist/
-Setup/payload/*.msix
-Setup/payload/*.exe
-Setup/.env
+# Electron installateur — dossier entier non versionné
+Setup/
