@@ -16,7 +16,7 @@
         "type": "local-file",
         "version": "20260507",
         "downloadUrl": "https://github.com/Thefirenight/wuwapie-releases/releases/download/db-20260507/WuwaDatabase.db",
-        "installPath": "%LOCALAPPDATA%\\com.kuniglios.wuwapie\\Data\\WuwaPie\\Database\\WuwaDatabase.db",
+        "installPath": "%LOCALAPPDATA%\\com.kuniglios.wuwapie\\WuwaPie\\Database\\WuwaDatabase.db",
         "changelog": ""
       }
     }
